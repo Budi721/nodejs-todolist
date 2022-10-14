@@ -24,7 +24,7 @@ import { Exclude, Expose } from 'class-transformer';
  *             "deleted_at": null
  *
  */
-@Table
+@Table({ tableName: 'todos' })
 export class Todo extends Model {
   @PrimaryKey
   @AutoIncrement
@@ -32,6 +32,7 @@ export class Todo extends Model {
   @Expose({ name: 'id' })
   id: number;
 
+  @Column({ field: 'activity_group_id' })
   @Expose({ name: 'activity_group_id' })
   @ForeignKey(() => ActivityGroup)
   @Column
@@ -45,6 +46,7 @@ export class Todo extends Model {
   @Column
   title: string;
 
+  @Column({ field: 'is_active' })
   @Expose({ name: 'is_active' })
   @Column
   isActive: number;
@@ -53,14 +55,17 @@ export class Todo extends Model {
   @Column
   priority: string;
 
+  @Column({ field: 'created_at' })
   @Expose({ name: 'created_at' })
   @CreatedAt
   createdAt: Date;
 
+  @Column({ field: 'updated_at' })
   @Expose({ name: 'updated_at' })
   @UpdatedAt
   updateAt: Date;
 
+  @Column({ field: 'deleted_at' })
   @Expose({ name: 'deleted_at' })
   @DeletedAt
   deletedAt: Date;

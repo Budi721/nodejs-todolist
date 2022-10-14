@@ -16,7 +16,7 @@ import { Exclude, Expose } from 'class-transformer';
 export class ActivityGroup extends Model {
   @PrimaryKey
   @AutoIncrement
-  @Column
+  @Column({ field: 'activity_group_id' })
   @Expose({ name: 'id' })
   id: number;
 
@@ -33,14 +33,17 @@ export class ActivityGroup extends Model {
   todos: Todo[];
 
   @CreatedAt
+  @Column({ field: 'created_at' })
   @Expose({ name: 'created_at' })
   createdAt: Date;
 
   @UpdatedAt
+  @Column({ field: 'updated_at' })
   @Expose({ name: 'updated_at' })
   updateAt: Date;
 
   @DeletedAt
+  @Column({ field: 'deleted_at' })
   @Expose({ name: 'deleted_at' })
   deletedAt: Date;
 }

@@ -18,5 +18,6 @@ export class HttpExceptionFilter<T extends HttpException>
 
     const json = new ResponseDto(status.toString(), exception.message, null);
     response.status(status).json(json);
+    response.end();
   }
 }
